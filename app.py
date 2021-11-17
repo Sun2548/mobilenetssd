@@ -151,12 +151,15 @@ def event_handle(event):
         msg = str(event["message"]["text"])
         if msg == "สวัสดี":
             replyObj = TextSendMessage(text="คะสวัสดีค่ะ")
-        else:
-    
-            replyObj = TextSendMessage(text="คะสวัสดีค่ะ")
-    elif msgType == "image":  
+        elif msg == "ไปเที่ยวกันไหม":
+            replyObj = TextSendMessage(text="ไปดิ")
+        elif msg == "กินข้าวไหม":
+            replyObj = TextSendMessage(text="ไม่คะ")
+        else :
+            replyObj = TextSendMessage(text=msg)
+        line_bot_api.reply_message(rtoken, replyObj)
+    elif magType == "image":
         try:
-        
             message_content = line_bot_api.get_message_content(event['message']['id'])
             i = Image.open(BytesIO(message_content.content))
             filename = event['message']['id'] + '.jpg'
