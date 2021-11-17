@@ -154,8 +154,9 @@ def event_handle(event):
         else:
     
             replyObj = TextSendMessage(text="คะสวัสดีค่ะ")
-    elif msgType == "image":
+    elif msgType == "image":  
         try:
+        
             message_content = line_bot_api.get_message_content(event['message']['id'])
             i = Image.open(BytesIO(message_content.content))
             filename = event['message']['id'] + '.jpg'
