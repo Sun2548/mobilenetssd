@@ -107,8 +107,8 @@ def callback():
     # เชื่อมต่อกับ line 
     no_event = len(decoded['events'])
     for i in range(no_event):
-            event = decoded['events'][i]
-            event_handle(event)
+            event = decoded(events'][i]
+            event_handle(event,json_line)
 
     # เชื่อมต่อกับ dialogflow
     #intent = decoded["queryResult"]["intent"]["displayName"] 
@@ -123,9 +123,13 @@ def callback():
 def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
-
-def event_handle(event):
+event_handle(event)
+def event_handle(even,json_line)
     print(event)
+                 
+                 
+                 
+              
     try:
         userId = event['source']['userId']
     except:
@@ -159,10 +163,14 @@ def event_handle(event):
             replyObj = TextSendMessage(text="ไม่คะ")
             line_bot_api.reply_message(rtoken, replyObj)
         else :
-            replyObj = TextSendMessage(text=msg)
-            line_bot_api.reply_message(rtoken, replyObj)
-    elif magType == "image":
+            headers = request.headers
+            json_headers = ({k:v for k, v in headers.items()})
+            json_headers.update({'Host':'bots.dialogflow.com'}) 
+            url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/565d9445-ec11-4925-a3bc-81a683f8f61e" 
+    elif  magType  ==  "imag":
         try:
+
+       
             message_content = line_bot_api.get_message_content(event['message']['id'])
             i = Image.open(BytesIO(message_content.content))
             filename = event['message']['id'] + '.jpg'
