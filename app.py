@@ -126,10 +126,6 @@ def reply(intent,text,reply_token,id,disname):
 event_handle(event)
 def event_handle(even,json_line)
     print(event)
-                 
-                 
-                 
-              
     try:
         userId = event['source']['userId']
     except:
