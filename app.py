@@ -123,9 +123,13 @@ def callback():
 def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
-                            
+event_handle(event)
 def event_handle(even,json_line)
     print(event)
+                 
+                 
+                 
+              
     try:
         userId = event['source']['userId']
     except:
@@ -166,6 +170,8 @@ def event_handle(even,json_line)
             requests.post(url,data=json_line, headers=json_headers)               
     elif  magType  ==  "imag":
         try:
+
+
             message_content = line_bot_api.get_message_content(event['message']['id'])
             i = Image.open(BytesIO(message_content.content))
             filename = event['message']['id'] + '.jpg'
