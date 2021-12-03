@@ -164,7 +164,7 @@ def event_handle(even,json_line)
             json_headers.update({'Host':'bots.dialogflow.com'}) 
             url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/565d9445-ec11-4925-a3bc-81a683f8f61e" 
             requests.post(url,data=json_line, headers=json_headers)               
-    elif  magType  ==  "imag":
+    elif magType  ==  "imag":
         try:
 
 
