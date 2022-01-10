@@ -123,7 +123,7 @@ def callback():
 def reply(intent,text,reply_token,id,disname):
     text_message = TextSendMessage(text="ทดสอบ")
     line_bot_api.reply_message(reply_token,text_message)
-event_handle(event)
+
 def event_handle(even,json_line)
     print(event)
     try:
@@ -149,13 +149,13 @@ def event_handle(even,json_line)
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        if msg == "สวัสดี":
+        if (msg == "สวัสดี") :
             replyObj = TextSendMessage(text="คะสวัสดีค่ะ")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif msg == "ไปเที่ยวกันไหม":
+        elif (msg == "ไปเที่ยวกันไหม") :
             replyObj = TextSendMessage(text="ไปดิ")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif msg == "กินข้าวไหม":
+        elif (msg == "กินข้าวไหม") :
             replyObj = TextSendMessage(text="ไม่คะ")
             line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "covid" :
