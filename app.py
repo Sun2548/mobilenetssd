@@ -149,15 +149,21 @@ def event_handle(even,json_line)
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        if msg == "สวัสดี":
+        if (msg == "สวัสดี") :
             replyObj = TextSendMessage(text="คะสวัสดีค่ะ")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif msg == "ไปเที่ยวกันไหม":
+        elif (msg == "ไปเที่ยวกันไหม") :
             replyObj = TextSendMessage(text="ไปดิ")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif msg == "กินข้าวไหม":
+        elif (msg == "กินข้าวไหม") :
             replyObj = TextSendMessage(text="ไม่คะ")
             line_bot_api.reply_message(rtoken, replyObj)
+        elif msg == "covid" :
+            url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
+            response = requests.get(url)
+            response = response.json()
+            replyObj = TextSendMessage(text=str(response))
+            line_bot_api.reply_message(rtoken, replyObj)       
         else :
             headers = request.headers
             json_headers = ({k:v for k, v in headers.items()})
@@ -166,8 +172,6 @@ def event_handle(even,json_line)
             requests.post(url,data=json_line, headers=json_headers)               
     elif magType  ==  "imag":
         try:
-
-
             message_content = line_bot_api.get_message_content(event['message']['id'])
             i = Image.open(BytesIO(message_content.content))
             filename = event['message']['id'] + '.jpg'
