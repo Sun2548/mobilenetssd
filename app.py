@@ -197,6 +197,6 @@ def event_handle(event,json_line):
         replyObj = StickerSendMessage(package_id=str(1),sticker_id=str(sk_id))
         line_bot_api.reply_message(rtoken, replyObj)
     return ''
-
+ 
 if __name__ == '__main__':
     app.run()
